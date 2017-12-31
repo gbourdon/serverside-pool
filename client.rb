@@ -5,7 +5,5 @@ port = 2000
 
 s = TCPSocket.open(hostname, port)
 
-while line = s.gets     # Read lines from the socket
-   puts line.chop       # And print with platform line terminator
-end
+s.puts "Hi!"
 s.close                 # Close the socket when done
