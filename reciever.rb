@@ -2,13 +2,15 @@ require 'socket'
 require_relative 'gettnclassy.rb'
 
 test = Client.new
-
-cache = test.get_messages
-puts cache
+cache = []
 
 loop do
     output = test.get_messages
-    cache.length.times {output.shift}
-    puts output
-    cache = test.get_messages
+
+    output.each do |message|
+        unless cache.include? message
+            puts message
+            cache.push message
+        end
+    end
 end
