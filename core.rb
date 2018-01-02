@@ -40,12 +40,14 @@ class Server
     end
 
     def run
+        counter = 1
         loop do
             Thread.start(@server.accept) do |client|
                  message = client.gets.chomp     # Read lines from the socket
                  unless message == ""
-                     puts message
-                     @logs.push message
+                     puts "#{counter}    |#{message}"
+                     @logs.push "#{counter}    |#{message}"
+                     counter =+ 1
                  end
                  client.puts @logs
                  client.close                  # Disconnect from the client
