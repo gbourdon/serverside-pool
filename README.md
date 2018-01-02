@@ -4,14 +4,14 @@ The goal of this project is to create a basic server-client messageing service.
 
 ## Manifest
 
-* `gettnclassy.rb`  
+* `core.rb`  
 Contains all required classes.
 
 * `server.rb`  
 A basic server. Takes input, adds it to the log, and then gives the client all messages in the log
 
-* `client.rb`  
-A basic client, returns all input given
+* `sender.rb`  
+A basic terminal that sends input to the server. Can be soft-exited via `|exit`
 
 * `reciever.rb`  
 Gets all input, and continually updates it
