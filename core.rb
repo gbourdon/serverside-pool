@@ -47,7 +47,7 @@ class Server
                  unless message == ""
                      puts "#{counter}    |#{message}"
                      @logs.push "#{counter}    |#{message}"
-                     counter =+ 1
+                     counter += 1
                  end
                  client.puts @logs
                  client.close                  # Disconnect from the client
