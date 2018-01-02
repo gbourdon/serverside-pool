@@ -1,4 +1,4 @@
-require_relative 'gettnclassy.rb'
+require_relative 'core.rb'
 
 server = Server.new(2000)
 

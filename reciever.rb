@@ -1,4 +1,4 @@
-require_relative 'gettnclassy.rb'
+require_relative 'core.rb'
 
 test = Client.new
 cache = []
