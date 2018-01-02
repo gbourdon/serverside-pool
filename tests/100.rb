@@ -1,5 +1,5 @@
 require 'socket'
-require_relative 'gettnclassy.rb'
+require_relative '../gettnclassy.rb'
 
 test = Client.new
 (1..100).each do |n|
