@@ -1,11 +1,13 @@
 require 'socket'
 
+$PORT = 2000
+
 class Client
     attr_reader :hostname
     attr_reader :port
     attr_accessor :cache
 
-    def initialize(hostname = 'localhost', port = 2000)
+    def initialize(hostname = 'localhost', port = $PORT)
         @hostname = hostname
         @port = port
         @cache = []
@@ -32,7 +34,7 @@ end
 class Server
     attr_reader :port
 
-    def initialize(port = 2000)
+    def initialize(port = $PORT)
         @server = TCPServer.open(port)
         @logs = []
     end
