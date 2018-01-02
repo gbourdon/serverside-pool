@@ -1,4 +1,3 @@
-require 'socket'
 require_relative 'gettnclassy.rb'
 
 test = Client.new
