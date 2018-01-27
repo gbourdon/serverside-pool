@@ -2,18 +2,18 @@ require_relative 'core.rb'
 require_relative 'link/reciever.rb'
 PORT = 2000
 
-def initilize
+def initilize(port = PORT)
     puts "Zeus TelChat Server [Version Dev]"
     puts
+    server = TCPServer.open(port)
     puts "Server Initilized".upcase
     puts "IP ADDRESS: #{IPSocket.getaddress(Socket.gethostname)}"
     puts "PORT: #{PORT}"
     puts 
+    server
 end
 
-initilize
-
-server = TCPServer.open(PORT)
+server = initilize(PORT)
 logs = []
 
 loop do
