@@ -26,6 +26,8 @@ loop do
                     puts "#{message.augments['Sender']}:#{message.message}"
                     logs.push "#{message.augments['Sender']}:#{message.message}"
                 end
+            when "QUERY"
+                (1 .. message.augments['Size'].times).each {|n| client.puts logs[-n]} 
         end
 
         client.close                  # Disconnect from the client
