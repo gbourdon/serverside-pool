@@ -1,4 +1,5 @@
 require 'socket'
+require_relative 'link/sender.rb'
 
 $PORT = 2000
 
@@ -33,9 +34,8 @@ class Client
     end
 
     def send_message(message)
-        s = TCPSocket.open(@hostname, @port)
-        s.puts "#{Socket.gethostname}: #{message}"
-        s.close
+        client = Sender::Client.new(@hostname, @port)
+        client.sendMessage("CHATMSG",{"Sender" => Socket.gethostname, "Message" => 'true'}, message)
     end
 
     def get_messages
