@@ -24,7 +24,7 @@ loop do
         case message.type
             when "CHATMSG"
                 unless message.message == ""
-                    puts "#{count}|#{message.augments['Sender']}: #{message.message}"
+                    puts "#{message.augments['Sender']}: #{message.message}"
                     logs.push "#{count}|#{message.augments['Sender']}: #{message.message}"
                     count += 1
                 end
