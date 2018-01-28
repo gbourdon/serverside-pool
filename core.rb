@@ -31,6 +31,7 @@ class Client
         @hostname = hostname
         @port = port
         @cache = []
+        @count = 0
     end
 
     def send_message(message)
@@ -40,23 +41,21 @@ class Client
 
     def get_messages
         output = []
-        s = TCPSocket.open(@hostname, @port)
-        s.puts nil
-        while line = s.gets
-           output.push line.chop
+        client = Sender::Client.new(@hostname, @port)
+        client.sendMessage("QUERY",{"Sender" => Socket.gethostname, "Size" => 100, "IncludeID" => "false"})
+        while line = client.socket.gets
+           output.push line.chomp
         end
-        s.close
-        output.server_parse
+        output
     end
 
     def get_messages_raw
         output = []
-        s = TCPSocket.open(@hostname, @port)
-        s.puts nil
-        while line = s.gets
+        client = Sender::Client.new(@hostname, @port)
+        client.sendMessage("QUERY",{"Sender" => Socket.gethostname, "Size" => 100,"IncludeID" => "true"})
+        while line = client.socket.gets
            output.push line.chop
         end
-        s.close
         output
     end
 end

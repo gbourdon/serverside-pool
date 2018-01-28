@@ -13,6 +13,7 @@ def initilize(port = PORT)
     server
 end
 
+count = 1
 server = initilize(PORT)
 logs = []
 
@@ -23,11 +24,16 @@ loop do
         case message.type
             when "CHATMSG"
                 unless message.message == ""
-                    puts "#{message.augments['Sender']}:#{message.message}"
-                    logs.push "#{message.augments['Sender']}:#{message.message}"
+                    puts "#{count}|#{message.augments['Sender']}: #{message.message}"
+                    logs.push "#{count}|#{message.augments['Sender']}: #{message.message}"
+                    count += 1
                 end
             when "QUERY"
-                (1 .. message.augments['Size'].times).each {|n| client.puts logs[-n]} 
+                if message.augments["IncludeID"] == "true"
+                    client.puts logs.last(message.augments['Size'].to_i)
+                else
+                    client.puts logs.last(message.augments['Size'].to_i).server_parse
+                end
         end
 
         client.close                  # Disconnect from the client
