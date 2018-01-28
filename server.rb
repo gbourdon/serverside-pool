@@ -3,7 +3,7 @@ require_relative 'link/reciever.rb'
 PORT = 2000
 
 def initilize(port = PORT)
-    puts "Zeus TelChat Server [Version Dev]"
+    puts "Zeus TelChat Server [Version Beta 0.2.0]"
     puts
     server = TCPServer.open(port)
     puts "Server Initilized".upcase
